@@ -8,3 +8,4 @@ Project: The initial version of the project's web application developed by Sebas
 ## Quick Links
 
 * [See our earth!](https://climatearchive.org)
+* <a href="https://uob-my.sharepoint.com/personal/kl19661_bristol_ac_uk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkl19661%5Fbristol%5Fac%5Fuk%2FDocuments%2F2022%20SPE%2D%20WalkingWithDinosaurs">Gantt Chart</a>
