@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>climatearchive | Phanerozoic</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.1/css/line.css">
+
+  <script data-goatcounter="https://climatearchive.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link href="https://unpkg.com/intro.js/minified/introjs.min.css" rel="stylesheet">
+
+  <!-- fa css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body id="body">
+
+    <!--
+        responsive sidebar and header
+        fhttps://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202
+     -->
+
+    <header class="header" id="header">
+
+        <!-- <div class="header_toggle"> <i class='uil uil-bars' id="header-toggle"></i> </div> -->
+        <i class="btnCtrls uil uil-bars" id="header-toggle" ></i>
+        <i class="btnCtrls uil uil-focus-target" id="homeView-button" ></i>
+        <i class="btnCtrls uil uil-expand-arrows-alt" id="toggle_fullscreen"></i>
+        <i class="btnCtrls uil uil-camera" id="screenshot-button"></i>
+        <i class="btnCtrls uil uil-globe" id="toggleProjection-button"></i>
+        <i class="btnCtrls uil uil-sync" id="spinGlobe-button"></i>
+        <i class="btnCtrls uil uil-table" id="toggleFilter-button"></i>
+        <i class="btnCtrls uil uil-map-marker" id="toggleUserCSVInput-button"></i>
+
+    </header>
+
+    <div class="col-xl-5 col-lg-6 col-9 userCSVInputField" id="csvLocations">
+  
+      <!-- <div class="col-4 userCSVInputField"> -->
+      <!-- <label for="csvTextarea" >Double-click anywhere to place a marker OR</label>     -->
+
+      <div class="input-group mb-3">
+        <b> Double-click on the map to place a marker at the closest available model time</b>
+      </div>
+
+      <label for="userCSVButton" ><b>OR enter a single present-day location</b></label>    
+      <div class="input-group mb-3">
+        <label class="input-group-text">Age</label>
+        <input class="form-control" id="singleMarkerAgeInput" placeholder="0 to 542 Ma" type="number" min="0" max="542">
+        <label class="input-group-text">Latitude</label>
+        <input class="form-control" id="singleMarkerLatInput" placeholder="-90 to 90" type="number" min="-90" max="90">
+        <label class="input-group-text">Longitude</label>
+        <input class="form-control" id="singleMarkerLonInput" placeholder="-180 to 180" type="number" min="-180" max="180">
+
+        <!-- <button type="button" id="userSingleLocationButton" class="btn btn-secondary">Reconstruct</button> -->
+      </div>
+
+      <label for="userCSVButton" ><b>OR enter a list of present-day locations (one per line)</b></label>    
+      <div class="input-group mb-3">
+          <textarea class="form-control" id="csvTextarea"
+            placeholder="age [Ma], latitude [-90 to 90], longitude [-180 to 180]&#10age [Ma], latitude [-90 to 90], longitude [-180 to 180]"
+          ></textarea>
+          <!-- <button type="button" id="userCSVButton" class="btn btn-secondary">Reconstruct</button> -->
+      </div>
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Variable</label>
+        </div>
+
+        <select class="form-select" id="csvVariableSelector">
+          <option value="0" selected>near-surface air temperature</option>
+          <option value="1">precipitation</option>
+        </select>    
+
+          <button type="button" id="userCSVButton" class="btn btn-success">Reconstruct</button>
+
+      </div>
+
+    </div>
+
+    <div class="sidebar" id="nav-bar">
+
+        <nav class="nav" id="nav_accordion">
+
+            <div>
+
+            <a href="index.html" class="nav_link nav_variable"> <i class='uil uil-home nav_logo-icon'></i> <span class="nav_name" id="title">climatearchive</span> </a>
+
+            <li class="navbar-header" id="dataLayers">Layers</li>
+
+                <div class="nav_list">
+
+                    <a href="#" class="nav_link nav_variable" id="jetStreamOnOff"> <i class='uil uil-windsock nav_icon'></i> <span class="nav_name">Jet Stream</span> </a>
+                    <a href="#" class="nav_link nav_variable" id="precipOnOff"> <i class='uil uil-cloud-showers-alt nav_icon'></i> <span class="nav_name">Precipitation</span> </a>
+                    <a href="#" class="nav_link nav_variable" id="surfcOnOff"> <i class='uil uil-mountains-sun nav_icon'></i> <span class="nav_name">Surface</span> </a>
+                    <a href="#" class="nav_link nav_variable" id="vegOnOff"> <i class='uil uil-trees nav_icon'></i> <span class="nav_name">Vegetation</span> </a>
+                    <a href="#" class="nav_link nav_variable" id="oceanOnOff"> <i class='uil uil-temperature-three-quarter nav_icon'></i> <span class="nav_name">SST</span> </a>
+                    <a href="#" class="nav_link nav_variable" id="currentsOnOff"> <i class='uil uil-wind nav_icon'></i> <span class="nav_name">Currents</span> </a>
+                </div>
+
+
+            </div>
+
+            <li class="navbar-header">Navigation</li>
+
+            <div class="nav_list">
+
+                <a class="nav_link" data-bs-toggle="collapse" data-bs-target="#menu_item1" href="#"><i class='uil uil-folder-open nav_icon'></i> <span class="nav_name">Collections<i class="uil uil-angle-down"></span></i> </a>
+                <ul id="menu_item1" class="submenu collapse" data-bs-parent="#nav_accordion">
+                    <li><a class="nav_link" href="index.html" id="phanCollectionButton">Last 540 Million Years</a></li>
+                    <li><a class="nav_link" href="cop26.html" id="COP26CollectionButton">Next 80 Years</a></li>
+                    <li><a class="nav_link" href="nextMillion.html" id="NextMillionCollectionButton">Next Million Years</a></li>
+                    <li><a class="nav_link" href="dune.html" id="DuneCollectionButton">Dune (Arrakis)</a></li>
+                    <li><a class="nav_link" href="wot.html" id="WoTCollectionButton">Wheel of Time</a></li>
+                </ul>
+
+                 <a href="feedback.html" class="nav_link" id="feedbackButton"> <i class='uil uil-comment-message nav_icon'></i> <span class="nav_name">Feedback</span> </a>
+                 <a href="about.html" class="nav_link" id="aboutButton"> <i class='uil uil-info-circle nav_icon'></i> <span class="nav_name">About</span> </a>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+  <div class="container-fluid" id="container-fluid">
+
+    <div class="row" id="world"></div>
+
+    <div class="row justify-content-between timeRow" >
+
+        <div class="col-xl-8 col-lg-7 col-md-6 col-12 d-none d-md-block" id="breadcrumbs"></div>
+
+        <div class="col-xl-3 col-lg-4 col-md-5 col-12 btn-group" role="group" id="timeControls">
+
+            <button class="btnTime"><i class="uil uil-backward" id="playBackward-button"></i></button>
+            <button class="btnTime"><i class="uil uil-forward" id="playForward-button"></i></button>
+
+            <button class="btnTime"><i class="uil uil-pause-circle" id="playPause-button" style="color: white"></i></button>
+            <button class="btnTime"><i class="uil uil-plus" id="playPlus-button"></i></button>
+            <button class="btnTime"><i class="uil uil-minus" id="playMinus-button"></i></button>
+
+            <i class='userInterface' id="ageLabel">0Ma</i>
+
+
+        </div>
+
+    </div>
+
+    <div class="row" id="geologicTimescale"></div>
+
+    <div class="row" id="timeSlider"></div>
+
+  </div>
+
+  <!-- graph container -->
+  <div id="graph-display" class="graph-display-hide col-md-4 col-12">
+    <i class="btnCtrls uil uil-multiply" id="data-display-toggle"></i>
+  </div>
+
+  <!-- https://jsfiddle.net/sojzu8a5/1/ -->
+  <section id="loading-screen">
+
+    <div id="loader"></div>
+
+  </section>
+
+  <!-- graph plotting options to display when double clicking the globe -->
+  <div id="pointer" class="pointer-options">
+    <div id="pointer-close" class="image">
+      <img src="https://cdn.pixabay.com/photo/2014/09/26/10/45/delete-462216_640.png" alt="" width="20px">
+    </div>
+    <br>
+
+    <div id="pointer-period-label" class="pointer-label">Stratigraphic description:</div>
+    <div id="pointer-period" class="pointer-options"></div>
+    
+    <div id="pointer-period-label" class="pointer-label">Age:</div>
+    <div id="pointer-age" class="pointer-options"></div>
+    
+    <div id="pointer-data-label" class="pointer-label">Location:</div>
+    <div id="pointer-data" class="pointer-options"></div>
+
+    <div id="pointer-reference-label" class="pointer-label">Source:</div>
+    <div id="pointer-reference" class="pointer-options"></div>
+    <br>
+    <hr>
+
+    <div id="pointer-axis-select" class="pointer-options">
+      <p class="pointer-options"></p>
+      <br>
+      <label for="pointer-y-axis-select" class="pointer-options">Variable: </label>
+      <select name="variable-selector" class="pointer-options" id="variable-selector">
+      </select>
+    </div>
+    <hr>
+    <button id="pointer-plot" type="button" class="btn btn-success pointer-options">Plot</button>
+    <div id="pointer-space" class="space pointer-options"></div>
+
+  </div>
+
+  <!-- tooltip to display data when hovering over graphs -->
+  <div id="tooltip" style="position:absolute;display:none;z-index:1000;background-color:lightgray;padding:5px;"></div>
+
+<script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

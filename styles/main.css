@@ -1,0 +1,744 @@
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  font-family: sans-serif;
+  background-color: black;
+  transition: 0.5s;
+  top: 0;
+}
+
+.container-fluid {
+  height: 100%;
+  z-index: -1;
+  border-style: none;
+  transition: 0.5s;
+  padding: 0rem 0.3rem 0rem 0rem;
+  margin: 0rem;
+  /* display: none; */
+}
+
+#world {
+  height: calc(100% - 150px);
+  background-color: black;
+  z-index: -1;
+  top: 0;
+  padding: 0;
+  /* padding-left: calc(var(--nav-width)) */
+}
+
+#breadcrumbs {
+  position: relative;
+  bottom: 18%;
+  background-color: transparent; /* Blue background */
+  padding-bottom: 0;
+}
+
+#geologicTimescale {
+  height: 150px;
+  bottom: 0;
+  /* height: 18%; */
+  background-color: black;
+  /* padding-left: calc(var(--nav-width)) */
+}
+
+/*
+@media (max-height: 700px) {
+  #geologicTimescale {
+    height: 100px;
+  }
+  #world {
+    height: calc(100% - 100px);
+  }
+} */
+
+.timeRow {
+  position: absolute;
+  z-index: 1;
+  bottom: 150px;
+  height: 40px;
+  right: 1rem;
+  width: calc(100% - var(--nav-width) - 0.3rem);
+  /* right: 1rem; */
+  background-color: transparent;
+  left: calc(var(--nav-width));
+  transition: right 0.5s;
+}
+
+.userCSVInputField {
+  display: none;
+  color: black;
+  position: absolute;
+  top: var(--header-height);
+  /* left: calc(var(--nav-width) + 0.5rem); */
+  z-index: var(--z-fixed);
+  transition: 0.5s;
+  /* padding-top: 0.2rem; */
+  padding: 15px 14px 0px 14px
+
+  /* margin: 20px; */
+}
+
+#csvLocations {
+  background-color: white;
+  border-radius: 5px;
+  border:2px solid black;
+  margin-top: 10px;
+}
+/* #timeControls{
+  right: 5rem;
+} */
+
+#timeSlider {
+  display: block;
+  height: 2%;
+  bottom: 15%;
+  margin-left: calc(var(--nav-width) + 3rem);
+  margin-right: 3rem;
+}
+
+#ageLabel {
+  font-size: 2.3rem;
+  color: #fff;
+  font-family: Courier;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  font-style: normal;
+  margin: 0px 0px 0px auto;
+}
+
+/* Style buttons */
+.btnTime {
+  background-color: transparent;
+  border: none; /* Remove borders */
+  color: gray; /* White text */
+  padding: 0px 0px; /* Some padding */
+  margin: 0px 1% 0px 1%;
+  font-size: 32px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btnTime:hover {
+  color: white;
+}
+
+/* remove focus around buttons on click */
+.btnTime:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.data-label {
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  color: gray;
+}
+
+.btnCtrls {
+  background-color: transparent; /* Blue background */
+  border: none; /* Remove borders */
+  color: gray; /* White text */
+  padding: 0px 0px; /* Some padding */
+  margin: 0px 10px 0px 10px;
+  font-size: 2rem; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btnCtrls:hover {
+  color: white;
+}
+
+.fa-sync-alt {
+  background-color: white;
+}
+
+/*
+Sidebar and header
+https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+:root {
+  --header-height: 3rem;
+  --first-color: rgba(51, 58, 69);
+  --first-color-light: rgba(134, 145, 160);
+  --white-color: #f7f6fb;
+  --body-font: "Helvetica", sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+}
+
+/* media query to hide some elements on smaller devices */
+@media screen and (max-width: 768px) {
+
+   /* hide sidebar on smaller devices */
+  :root {
+    --nav-width: 0px;
+  }
+  /* hide debug GUI on smaller devices */
+  #gui { 
+   display: none;
+  }
+
+}
+
+@media screen and (min-width: 769px) {
+
+  /* show sidebar on larger devices */
+  :root {
+    --nav-width: 64px;
+  }
+
+  /* show debug GUI on larger devices */
+  #gui { 
+    display: block;
+   }
+
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+#header {
+  width: 420px;
+  /* width: 270px; */
+  height: var(--header-height);
+  position: absolute;
+  /* top: 0; */
+  /* left: var(--nav-width); */
+  display: flex;
+  /* padding: 0.0rem 0.5rem 0.5rem 0.5rem; */
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: var(--z-fixed);
+  transition: 0.5s;
+  padding-top: 0.0rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--nav-width);
+  background-color: var(--first-color);
+  padding: 0.5rem 0.5rem 0 0;
+  transition: 0.5s;
+  z-index: var(--z-fixed);
+  overflow-y: auto;
+}
+
+/* Graphing styles */
+
+#graph-display {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background-color: var(--first-color);
+  transition: 0.5s;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: var(--z-fixed);
+  display: none;
+}
+
+.graph-container {
+  margin: 10px;
+  margin-bottom: 0px;
+  clear: both;
+  float: middle;
+  width: 96%;
+  /* padding: 20px; */
+  background-color: white;
+}
+
+/* @media screen and (max-width: 768) {
+  .graph-display-show {
+    width: 100%;
+    padding: 0.5rem 0.5rem 0 0;
+  }
+}
+
+@media screen and (min-width: 769) {
+  .graph-display-show {
+    width: 33%;
+    padding: 0.5rem 0.5rem 0 0;
+  }
+} */
+
+.graph-display-hide {
+  width: 0px;
+}
+
+.buttonRow {
+  width: 100%;
+}
+
+.graph-btn {
+  display: inline-block;
+  /* width: calc(16% - 10px); */
+  width: 14%;
+  height: 35px;
+  padding: 6px;
+  margin: 2.5%;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  outline: none;
+}
+
+.graph-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.graph-btn-download {
+  padding: 0px;
+  font-size: 1.2rem;
+  margin-right: 0px;
+  border-radius: 8px 0px 0px 8px;
+  pointer-events: none;
+}
+
+.graph-btn-group {
+  border-radius: 0px;
+  display: inline-block;
+  margin: 0px;
+}
+
+.graph-btn-group-end {
+  border-radius: 0px 8px 8px 0px;
+  display: inline-block;
+  margin-left: 0px;
+}
+
+.graph-btn-toggle {
+  padding: 0px;
+  font-size: 1.2rem;
+}
+
+.graph-btn-delete {
+  padding: 0px;
+  font-size: 1.2rem;
+}
+
+/***********************************/
+
+
+.navbar-header {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--first-color);
+  padding: 1.2rem 1rem 0.2rem 0.6rem;
+}
+
+.navbar-header-pd {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--first-color-light);
+  padding: 1.2rem 1rem 0.2rem 0.6rem;
+}
+
+.nav_logo,
+.nav_link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.2rem 0rem 0rem 0rem;
+}
+
+.sidebar li .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: var(--bs-dark);
+}
+
+.sidebar .nav-link:hover {
+  color: var(--bs-primary);
+}
+
+.nav_logo {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.nav_logo-icon {
+  font-size: 1.25rem;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  color: var(--white-color);
+}
+
+.nav_logo-name {
+  color: var(--white-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+#title {
+  color: var(--white-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav_link {
+  position: relative;
+  color: var(--first-color-light);
+  margin-bottom: 0rem;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  transition: 0.3s;
+}
+
+.nav_link:hover {
+  color: var(--white-color);
+  background-color: var(--first-color-light);
+}
+
+.nav_icon {
+  font-size: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  text-align: right;
+}
+
+.nav_name {
+  font-size: 1rem;
+}
+
+.show {
+  left: 0;
+}
+
+.body-pd {
+  padding-left: calc(var(--nav-width) + 1rem);
+}
+
+/* .timeRow-pd {
+  padding-left: calc(var(--nav-width) + 1rem)
+} */
+
+.userCSVInputField-pd {
+  margin-left: calc(var(--nav-width) + 1rem);
+}
+
+/* .header-pd {
+    left: calc(var(--nav-width) + var(--nav-width));
+} */
+
+.active {
+  color: var(--white-color);
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 4px;
+  height: 52px;
+  background-color: var(--white-color);
+}
+
+/* @media screen and (min-width: 768px) { */
+
+.container-fluid {
+  padding-left: calc(var(--nav-width) + 0.3rem);
+}
+
+.container-fluid-pd {
+  padding-left: calc(220px + 0.3rem);
+}
+
+.container-fluid-pd-right {
+  padding-right: calc(33% + 0.5rem);
+}
+
+.header {
+  left: calc(var(--nav-width) + 0.3rem);
+}
+
+.header-pd {
+  /* left: calc(var(--nav-width) + var(--nav-width) + 2.2rem);
+      padding: 0 0.0rem 0.5rem calc(var(--nav-width)) */
+  left: calc(220px + 0.3rem);
+}
+
+.sidebar {
+  left: 0;
+  padding: 1rem 0rem 0 0;
+}
+
+.show {
+  width: 220px;
+}
+
+.timeRow {
+  left: calc(var(--nav-width) + 0.3rem);
+  right: 2rem;
+}
+
+.timeRow-pd {
+  width: calc(100% - 220px - 4.3rem);
+  left: calc(220px + 0.3rem);
+  right: 5rem;
+} 
+
+.timeRow-pd-right {
+  right: calc(33% + 5rem);
+}
+
+/* .pointer-pd-right {
+  right: calc(33% + 1rem);
+} */
+
+.userCSVInputField {
+  margin-left: calc(var(--nav-width) + 1rem);
+}
+
+.userCSVInputField-pd {
+  margin-left: calc(220px + 1rem);
+}
+
+
+/*
+Loading screen animation
+https://jsfiddle.net/sojzu8a5/1/
+*/
+
+#loading-screen {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 1;
+  transition: 1s opacity;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #9370db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #ba55d3;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #ff00ff;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+
+#pointer {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  display: none;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px 10px 0px 10px;
+  z-index: 999;
+  border:2px solid gray;
+}
+
+#pointer-plot {
+  width: 100%;
+}
+
+#export-link {
+  display: none
+}
+
+.pointer-label {
+  font-weight: bold;
+  padding-top: 0.5rem;
+
+}
+
+#pointer div {
+  text-align: center;
+}
+
+#pointer .image {
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 2px;
+  border-radius: 3px;
+  text-align: right;
+}
+
+#pointer .image:hover {
+  background-color: #ff3131;
+}
+
+#pointer-axis-select {
+  height: 50px;
+  width: 100%;
+}
+
+.space {
+  width: 30px;
+  display: inline-block;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/**************************************************************************************************
+ * Styling Reset
+ **************************************************************************************************/
+
+html, div, span, h1, h2, h3, h4, h5, h6, p, a, svg, canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: 1em mplus-2p-light-sub, Helvetica, arial, freesans, clean, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased; /* safari disables subpixel antialiasing for some reason */
+}
+
+/*
+@media (max-width: 825px), (max-height: 700px) {
+  html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, svg, canvas {
+      font-size: 0.8em;
+  }
+} */
+
+/**************************************************************************************************
+* About Page
+**************************************************************************************************/
+
+#about {
+  font-size: 4.5rem;
+}
+
+#about h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+#about div {
+  clear: both;
+}
+
+#about .blurb {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#about .blurb img {
+  padding-top: 2rem;
+}
+
+#about img {
+  display: block;
+  margin: auto;
+}
+
+#about:first-child {
+  padding-top: 3rem;
+}
+
+#cover {
+  border: 1px solid #eeeeee;
+}
+
+#about .left {
+  width: 50%;
+  float: left;
+  text-align: right;
+}
+
+#about .right {
+  width: 50%;
+  float: right;
+}
+
+#about .center {
+  text-align: center;
+}
+
+#about .pad {
+  visibility: hidden;
+}
+
+#closing {
+  padding-bottom: 2.5rem;
+}

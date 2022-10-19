@@ -1,0 +1,204 @@
+<!-- 
+layout and styling of about.html from: https://github.com/cambecc/earth 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>climatearchive | about</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.1/css/line.css">
+
+    <script data-goatcounter="https://climatearchive.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+        
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <a href="./" class="internal-link" id="closeButton"><i class='uil uil-multiply'></i></a>
+
+    <div class="container-sm" id="about">
+    
+        <div class="row">
+            <a href="./" class="mainHeading">climatearchive.org </a>     
+        </div> 
+
+        <div class="row subHeading">The Application</div> 
+        
+        <div class="row">
+            <p class="subText">An interactive visualisation of climate model data across time and space.</p>      
+        </div> 
+
+        <div class="row subHeading">Contributors</div> 
+
+        <div class="row">
+            <p class="left">visualisation |</p>
+            <p class="right"><a href="https://www.bristol.ac.uk/people/person/Sebastian-Steinig-cb9bbc66-4b94-4c16-be2a-90cc5cf1afa0/" target="_blank" rel="noopener noreferrer" >Sebastian Steinig</a></p>
+        </div> 
+
+        <div class="row">
+            <p class="left">testing & deployment |</p>
+            <p class="right"><a href="https://research-information.bris.ac.uk/en/persons/tessa-s-alexander" target="_blank" rel="noopener noreferrer" >Tessa Alexander</a><br>
+            <a href="https://www.bris.ac.uk/contact/person/getDetails?personKey=77OXcsjBIzdA0wlmA7QmIzJFTiTuTn" target="_blank" rel="noopener noreferrer" >Mike Rodwell</a></p>
+        </div> 
+        
+        <div class="row">
+            <p class="left">backend API and plotting |</p>
+            <p class="right">Zak Duggan<br>Patrick Lee<br>Jakub Navratil<br>Ikenna Offokansi<br>Matthew Swann</a></p>
+        </div> 
+
+        <div class="row">
+            <p class="left">contact |</p>
+            <p class="right"><a href="mailto:sebastian.steinig@bristol.ac.uk" >sebastian.steinig@bristol.ac.uk</a><a href="https://twitter.com/sebsteinig" ><br>@sebsteinig</a></p>
+        </div> 
+
+        <div class="row subHeading">Credits</div> 
+        
+        <div class="row">
+            <p class="subText">This project is heavily inspired by and would not have been possible without previous work. I am particularly grateful to the following people and projects for sharing their ideas and/or code:</p>      
+        </div> 
+
+        <div class="row">
+            <p class="left">inspiration for the project |</p>
+            <p class="right"><a href="https://earth.nullschool.net" target="_blank" rel="noopener noreferrer" >earth</a> by <a href="https://twitter.com/cambecc?lang=en" target="_blank" rel="noopener noreferrer" >Cameron Beccario</a></p>
+        </div>
+
+        <div class="row">
+            <p class="left">time interpolation on the GPU |</p>
+            <p class="right"><a href="https://blog.mbq.me/webgl-weather-globe/" target="_blank" rel="noopener noreferrer" >WebGL weather globe</a> by <a href="https://mbq.me" target="_blank" rel="noopener noreferrer" >Miron Kursa</a></p>
+        </div>
+
+        <div class="row">
+            <p class="left">moving particles on the GPU |</p>
+            <p class="right"><a href="https://blog.mapbox.com/how-i-built-a-wind-map-with-webgl-b63022b5537f" target="_blank" rel="noopener noreferrer" >How I built a wind map with WebGL</a> by <a href="https://medium.com/@agafonkin" target="_blank" rel="noopener noreferrer" >Vladimir Agafonkin</a></p>
+        </div>
+
+        <div class="row">
+            <p class="left">geologic timescale |</p>
+            <p class="right"><a href="https://github.com/UW-Macrostrat/geo-timescale" target="_blank" rel="noopener noreferrer" >UW-Macrostrat/geo-timescale</a> by <a href="https://macrostrat.org" target="_blank" rel="noopener noreferrer" >UW-Madison Macrostrat</a>, updated by <a href="https://twitter.com/Mega_Jules" target="_blank" rel="noopener noreferrer" >Jules Blom</a> and distributed under the MIT license</p>
+        </div>
+
+        <div class="row">
+            <p class="left">3D engine |</p>
+            <p class="right"><a href="https://threejs.org" target="_blank" rel="noopener noreferrer" >three.js</a></p>
+        </div>
+
+        <div class="row">
+            <p class="left">charts |</p>
+            <p class="right"><a href="https://d3js.org" target="_blank" rel="noopener noreferrer" >D3.js</a> </p>
+        </div>
+
+        <div class="row">
+            <p class="left">warming stripes |</p>
+            <p class="right"><a href="https://twitter.com/ed_hawkins" target="_blank" rel="noopener noreferrer" >Ed Hawkins</a> </p>
+        </div>
+
+        <div class="row">
+            <p class="left">warming stripes in D3.js |</p>
+            <p class="right">by <a href="https://github.com/adilzeshan/warming-stripes" target="_blank" rel="noopener noreferrer" >xadilzeshan¥</a> distributed under the MIT license</p>
+        </div>
+
+        <div class="row">
+            <p class="left">layout |</p>
+            <p class="right"><a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer" >Bootstrap</a>, <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" target="_blank" rel="noopener noreferrer" >Hyper Theme</a> </p>
+        </div>
+
+        <div class="row">
+            <p class="left">animations |</p>
+            <p class="right"><a href="https://greensock.com" target="_blank" rel="noopener noreferrer" >GreenSock</a></p>
+        </div>
+
+        <div class="row">
+            <p class="left">icons |</p>
+            <p class="right"><a href="https://iconscout.com/unicons" target="_blank" rel="noopener noreferrer" >Unicons</a></p>
+        </div>
+
+        <div class="row">
+            <p class="subText2">3D vegetation models are all licensed under the <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" >Creative Commons Attribution</a>. They include <a href="https://skfb.ly/6YzsC" target="_blank" rel="noopener noreferrer" >"Polygon Tree Pack"</a> by <a href="https://streakbyte.com" target="_blank" rel="noopener noreferrer" >StreakByte</a>, <a href="https://skfb.ly/69WOU" target="_blank" rel="noopener noreferrer" >"Bush"</a> by <a href="https://artbakegraphics.artstation.com" target="_blank" rel="noopener noreferrer" >Artbake Graphics</a> and  <a href="https://skfb.ly/onvVP" target="_blank" rel="noopener noreferrer" >"Low Poly Grass"</a> by <a href="https://sketchfab.com/FC_TUIN" target="_blank" rel="noopener noreferrer" >RM_Way</a>. Land surface textures are created from <a href="https://visibleearth.nasa.gov/collection/1484/blue-marble" target="_blank" rel="noopener noreferrer" > "Blue Marble: Next Generation"</a> images by <a href="https://earthobservatory.nasa.gov" target="_blank" rel="noopener noreferrer" >NASA’s Earth Observatory</a>. </p>  
+            <p class="subText2">The <a href="https://www.deviantart.com/d3cline/art/Desert-Planet-Texture-Tile-288094984v" target="_blank" rel="noopener noreferrer" >surface desert texture</a> for the Dune planet Arrakis was made by <a href="https://www.deviantart.com/d3cline" target="_blank" rel="noopener noreferrer" >d3cline</a> </a> and is shared under the <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode" target="_blank" rel="noopener noreferrer" >Creative Commons Attribution-Share Alike 3.0 License</a>. The <a href="https://www.the3rdsequence.com/texturedb/texture/43/smooth+sand+dunes/" target="_blank" rel="noopener noreferrer" >smooth sand dunes</a> texture by the 3rdSequence</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" >Creative Commons Attribution 4.0 International License</a>. Additional royalty-free rocky terrain textures 'Age of the Canyon' and 'Martian Range' are used from <a href="http://spiralgraphics.biz/packs/terrain_rocky/index.htm?0" target="_blank" rel="noopener noreferrer">Spiral Graphics.</a>  </p>   
+            <p class="subText2">The Wheel of Time world map was created in <a href="https://www.wonderdraft.net" target="_blank" rel="noopener noreferrer" >Wonderdraft</a> by Sebastian Steinig based on previous maps by <a href="https://atlasoficeandfireblog.wordpress.com/2020/01/22/a-new-wheel-of-time-world-map/" target="_blank" rel="noopener noreferrer" >Adam Whitehead</a> and <a href="https://www.thegreatblight.com/maps" target="_blank" rel="noopener noreferrer" >TheGreatBlight.com</a></p>                 
+        </div> 
+
+        
+        <div class="row subHeading">Data Sources </div> 
+
+        <div class="row">
+            <p class="subText">Climate model data shown on this site can be accessed either from the referenced publications or by contacting the linked author.</p>      
+        </div> 
+
+
+        <div class="row">
+            <p class="left">Phanerozoic model data |</p>
+            <p class="right">description in <a href="https://cp.copernicus.org/articles/17/1483/2021/" target="_blank" rel="noopener noreferrer" >Valdes et al. (2021)</a><br>access via <a href="https://www.bristol.ac.uk/geography/research/bridge/" target="_blank" rel="noopener noreferrer" >BRIDGE group</a> at the University of Bristol</p>
+        </div>
+        <div class="row">
+            <p class="left">Paleogeographies |</p>
+            <p class="right"><a href="https://www.earthbyte.org/paleodem-resource-scotese-and-wright-2018/" target="_blank" rel="noopener noreferrer" >Scotese and Wright (2018)</a></p>
+        </div> 
+        <div class="row">
+            <p class="left">Dune simulation |</p>
+            <p class="right">article in <a href="https://theconversation.com/dune-we-simulated-the-desert-planet-of-arrakis-to-see-if-humans-could-survive-there-170181" target="_blank" rel="noopener noreferrer" >The Conversation</a><br>access via <a href="https://research-information.bris.ac.uk/en/persons/alexander-j-farnsworth" target="_blank" rel="noopener noreferrer" >Alex Farnsworth</a> at the University of Bristol</p>
+        </div>
+        <div class="row">
+            <p class="left">Wheel of Time simulation |</p>
+            <p class="right">article in <a href="https://theconversation.com/wheel-of-time-is-set-thousands-of-years-from-now-yet-its-still-burdened-with-todays-climate-change-174088" target="_blank" rel="noopener noreferrer" >The Conversation</a><br>access via <a href="https://research-information.bris.ac.uk/en/persons/emily-ball" target="_blank" rel="noopener noreferrer" >Emily Ball</a> at the University of Bristol</p>
+        </div>
+        <div class="row">
+            <p class="left">Next Million Years Emulator |</p>
+            <p class="right">study report at <a href="https://www.paleo.bristol.ac.uk/~ggdjl/reports/TR-19-09.pdf" target="_blank" rel="noopener noreferrer" >Svensk Kärnbränslehantering AB</a><br>led by <a href="https://www.bristol.ac.uk/people/person/Natalie-Lord-08493433-1aba-4e31-b015-77b6d23fc242/" target="_blank" rel="noopener noreferrer" >Natalie Lord</a> and <a href="https://www.bristol.ac.uk/people/person/Dan-Lunt-f54ac388-22de-4fbd-9f8d-0b3b66293a83/" target="_blank" rel="noopener noreferrer" >Dan Lunt</a> from the University of Bristol</p>
+        </div>
+        
+ 
+        <div class="row subHeading">Funding</div> 
+
+        <div class="row">
+            <p class="subText">Initial seed corn funding for the project has been provided by the <a href="http://www.bristol.ac.uk/golding/" target="_blank" rel="noopener noreferrer" >Jean Golding Institute</a> for data science and data-intensive research at the University of Bristol.</p>      
+        </div> 
+
+        <div class="row">
+            <p class="subText">The COP26 visulisation of CMIP6 future projections was funded by the <a href="http://www.bristol.ac.uk/cabot/" target="_blank" rel="noopener noreferrer" >Cabot Institute for the Environment</a> and the <a href="http://www.bristol.ac.uk/geography/" target="_blank" rel="noopener noreferrer" >School of Geographical Sciences</a>.</p>      
+        </div> 
+
+        <div class="row justify-content-md-center">
+
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a class="thumbnail" href="http://www.bristol.ac.uk/golding/" target="_blank" rel="noopener noreferrer" >
+                        <img src="images/JGI-visual.png" alt="" id="JGILogo">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a class="thumbnail" href="http://www.bristol.ac.uk/cabot/" target="_blank" rel="noopener noreferrer" >
+                        <img src="images/cabot-banner.jpg" alt="" id="cabotLogo">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4">
+                    <a class="thumbnail" href="https://www.bristol.ac.uk/geography/" target="_blank" rel="noopener noreferrer" >
+                        <img src="images/UOB-visual.png" alt="" id="UoBLogo">
+                    </a>
+                </div>
+
+        </div> 
+
+    </div> 
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+<!-- <div>
+    <p class="left">Modules |</p>
+    <p class="right">&nbsp;<a href="http://d3js.org/">D3.js</a>,
+        <a href="http://backbonejs.org/">backbone.js</a>,
+        <a href="https://github.com/cujojs/when">when.js</a>,
+        <a href="http://nodejs.org">node.js</a>
+    </p>
+</div> -->

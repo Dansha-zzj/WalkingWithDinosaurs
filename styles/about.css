@@ -1,0 +1,128 @@
+
+/**************************************************************************************************
+ * Styling Reset
+ *************************************************************************************************/
+
+body, div, span, h1, h2, h3, h4, h5, h6, p, a, svg, canvas {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    font-size: 1.5rem;
+    -webkit-font-smoothing: subpixel-antialiased; /* safari disables subpixel antialiasing for some reason */
+}
+/**************************************************************************************************
+ * Page Styling
+ **************************************************************************************************/
+ 
+.mainHeading {
+    font-weight: bold;
+    font-size: 3.4rem;
+    text-align: center;
+    padding-top: 2rem;
+    text-decoration: none;
+    color: #eeeeee;
+}
+
+.subHeading {
+    text-align: left;
+    color: #888888;
+    padding: 1.5rem 0rem 0.0rem 0rem;
+}
+
+.subText {
+    text-align: left;
+    color: #eeeeee;
+    padding: 0.0rem 0rem 0.5rem 0rem;
+}
+
+.subText2 {
+    text-align: left;
+    color: #eeeeee;
+    padding: 1.0rem 0rem 0.5rem 0rem;
+}
+
+.center {
+    margin: 0 auto;
+    width: 80%;
+}
+
+a, .text-button {
+    color: #888888;
+}
+
+body {
+    color: #eeeeee;
+    background: #000005;
+}
+
+#closeButton {
+    position: absolute;
+    font-size: 2.4rem;
+    padding: 0.2rem 0rem 0.0rem 0.5rem;
+
+}
+
+#JGILogo {
+    width:260px;
+    padding: 2rem 0 2rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#cabotLogo {
+    width:260px;
+    padding: 3.5rem 0 2rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#UoBLogo {
+    width:260px;
+    padding: 4rem 0 2rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/**************************************************************************************************
+ * About Page
+ **************************************************************************************************/
+
+a:hover {
+    color: #eeeeee;
+}
+
+#about .left {
+    width: 50%;
+    float: left;
+    text-align: right;
+    padding-top: 0.2rem;
+    padding-right: 0.0rem;
+    font-weight: bold;
+}
+
+#about .right {
+    width: 50%;
+    float: right;
+    padding-top: 0.2rem;
+    padding-left: 0.5rem;
+    text-align: left;
+}
+
+#about .center {
+    text-align: center;
+}
+
+.feedback-container{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .feedback-form{
+    justify-content: center; 
+    align-items: center; 
+  }

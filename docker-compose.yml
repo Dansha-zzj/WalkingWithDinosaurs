@@ -1,0 +1,24 @@
+# e2e/docker-compose.yml from repo
+# https://github.com/bahmutov/cypress-open-from-docker-compose
+version: '3.8'
+services:
+  # this is the web application we are going to test
+  climate-map:
+    build: ./
+    ports:
+      - "8081:8080"
+  # Cypress container
+  cypress:
+    build: ./cypress
+    depends_on:
+      - climate-map
+    environment:
+      # pass base url to test pointing at the web application
+      - CYPRESS_baseUrl=http://climate-map:8080
+      - NO_COLOR=1
+      # - INCLUDE_SCREENSHOT_TESTS=False
+      # - INCLUDE_FUNCTIONAL_TESTS=False
+    working_dir: /e2e
+    # share the cypress folder as volume to avoid copying
+    volumes:
+      - ./cypress:/e2e
