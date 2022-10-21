@@ -1,5 +1,13 @@
 ﻿# 2022-WalkingWithDinosaurs
-## Project Decription
+ 
+ ## Table of Contents
+- [2022-WalkingWithDinosaurs](#2022-walkingwithdinosaurs)
+- [Project Description](#project-description)
+- [Stakeholders](#stakeholders)
+- [User stories](#user-stories)
+- [Quick links](#quick-links)
+
+## Project Description
 
 Client: Sebastian Steinig, University of Bristol
 
