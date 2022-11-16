@@ -29,6 +29,23 @@ School of Geographical Sciences(Students)-These people watch the application to 
 
 University of Bristol-The university should ensure the confidentiality and security of this application. And,they should secure the database so that it is not subject to any scrutiny or reputational damage. If the project is a great success and involves a range of issues such as museum displays, the vital interests of the creator should be protected.
 
+## Development - using Docker
+
+Use the `Dockerfile` within repository to build a controlled node environment. This Docker image will then used to create and run a custom *node* Docker container, that installs development node packages and also runs the development server. Your local code will be mounted into the `/var/src/` directory of the running Docker container. This will allow you to see your local changes in your local browser.
+
+### Installation
+
+Build the docker image and call it `npm`
+``` bash
+docker build -t npm .
+```
+
+Run docker container with the newly created image `npm`, called `climate-map`. 
+``` bash
+docker run -v "`pwd`":/var/src/ -p 8080:8080 -d --name climate-map npm
+```
+    
+
 
 ## Quick Links
 
