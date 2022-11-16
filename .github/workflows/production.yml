@@ -1,0 +1,39 @@
+name: Run Cypress acceptance tests against production site
+
+on:
+  schedule:
+    - cron:  "3 22 * * WED"
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get Previous tag
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1.2"
+      - name: Check out latest tag
+        env:
+          LATEST_TAG: ${{ steps.previoustag.outputs.tag }}
+        run: |
+          echo "The latest tag $LATEST_TAG"
+          git checkout $LATEST_TAG
+      - name: Run Cypress tests against production site
+        run: |
+          docker build --build-arg USER_ID=`id -u` --build-arg GROUP_ID=`id -g` cypress/. -t cypress-test-suite
+          docker run -v "`pwd`":/e2e -w /e2e -e CYPRESS_baseUrl=https://climatearchive.org/ --rm cypress-test-suite
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots-actual
+          path: cypress/snapshots/actual
+          retention-days: 7
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots-diff
+          path: cypress/snapshots/diff
+          retention-days: 7

@@ -1,0 +1,58 @@
+name: Docker build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Record Docker version
+      run: docker -v
+    - name: Build development node Docker environment
+      run: docker build -t npm .
+    - name: Generate static files
+      run: docker run --entrypoint="" --rm -v "`pwd`/dist":/var/src/dist npm npm run build
+    - name: Verify a home page exists
+      run: ls dist/index.html
+    - name: Display listing generated HTML files
+      run: find dist -type f
+    # TODO: Validate resulting HTML #335
+    - name: Build development API Python Docker environment
+      run: docker build -t climate-app-python . -f api/Dockerfile
+    - name: Run development Docker environment
+      run: docker run --name api -p 5000:5000 -d climate-app-python
+    - name: Check docker logs
+      run: docker logs api
+    - name: Run API tests
+      run: docker exec api pytest -v
+    - name: Stop and remove docker container
+      run: |
+        docker stop api
+        docker rm api
+    # Create static files artifacts on the main branch
+    - uses: actions/upload-artifact@v3
+      if: success() && contains(github.ref, 'refs/heads/main')
+      with:
+        name: static-files
+        path: dist/
+        if-no-files-found: error
+    # Build and push
+    # https://docs.docker.com/ci-cd/github-actions/
+
+# TODO Push Docker image to an image registry - at this stage used for development only, so non essenatil step.
+
+    # - uses: whoan/docker-build-with-cache-action@v5
+    #   with:
+    #     image_name: node
+    #     context: ./
+        # username:
+        # password:
+        # pull_image_and_stages: false
+        # push_image_and_stages: false
+        # compose_file:
+        # registry
+        # push_git_tag: true
+
+#  see: https://www.docker.com/blog/docker-github-actions/
+# https://github.com/marketplace/actions/docker-run-action

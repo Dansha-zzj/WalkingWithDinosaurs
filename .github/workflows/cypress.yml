@@ -1,0 +1,27 @@
+name: Cypress tests
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Record Docker version
+      run: docker -v
+    - name: Run Cypress tests against the dev site
+      run: sh run-dev-tests.sh
+    - uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: cypress-screenshots-actual
+        path: cypress/snapshots/actual
+        retention-days: 7
+    - uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: cypress-screenshots-diff
+        path: cypress/snapshots/diff
+        retention-days: 7
