@@ -1,0 +1,16 @@
+{
+  "name": "001",
+  "version": "1.0.0",
+  "description": "Walking with dinosaurs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build <your entry file>"
+  },
+  "author": "Dansha-zzj",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-bundler": "^1.12.5",
+    "three": "^0.147.0"
+  }
+}
