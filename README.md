@@ -19,7 +19,10 @@ Project: The initial version of the project's web application developed by Sebas
 
 ## User stories
 
-As a geologist, our client wants to add some function (game or VR/VR) so that he can better present his research And make people better understand Earth's past and future climate change
+1.As a geologist, our client wants to add some function (game or VR/VR) so that he can better present his research And make people better understand Earth's past and future climate change
+2.As a teacher using this project, my goal is to provide my students with a good tool to help them learn more knowledge outside of classroom teaching,so that I want this program to have more interesting settings that students can use it more frequetly.
+3.As a geography major, I hope to have a project where I can quickly review my knowledge, so I hope this project can supplement some 3d models and improve the time line.
+4.As an app user, I hope to see a complete 3d world model from a first-person perspective, so that I can have a more detailed and intuitive understanding of the Jurassic world.
 
 
 ## Stakeholders
